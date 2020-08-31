@@ -1,6 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Switch, Route} from 'react-router-dom'
 import {deleteAdventure} from '../actions/deleteAdventure'
+import EditAdventure from './EditAdventure'
+
 
 
 class Adventure extends React.Component {
@@ -8,7 +11,6 @@ class Adventure extends React.Component {
   constructor(props){
     super(props)
     console.log(this.props)
-
   }
 
   handleDelete =(event) => {
@@ -29,14 +31,21 @@ class Adventure extends React.Component {
       <div>
       {adventure ?
         <>
-          <h2>{adventure.title}, by: name </h2>
-          <img className="image_thumbnail" alt="activity" src= {adventure.image_url}/>
-          <p>{adventure.description} </p>
-          <a href={adventure.website_url}>Learn More</a><br/><br/>
 
+          <h2>{adventure.title} - By: {adventure.user.name} </h2>
+          <img className="image_thumbnail" alt="activity" src= {adventure.image_url}/><br/>
           <button onClick={() => this.props.history.goBack()}>Close</button>{'  '}
           <button onClick={() => this.props.history.push(`/users/${adventure.user_id}/adventures/${adventure.id}/edit`)}> Edit Adventure </button> {'  '}
           <button data-user={adventure.user_id} data-id={adventure.id} onClick={this.handleDelete}> Delete Adventure </button> <br/><br/>
+          <Switch>
+          <Route path="/users/:id/adventures/:adventure_id/edit" render={(routerProps) => <EditAdventure {...routerProps} />} />
+          </Switch>
+          <p>Description: {adventure.description} </p>
+          <a href={adventure.website_url}>Learn More</a><br/>
+          <h3>Public Comments</h3>
+          {adventure.comments.map(comment=> <ul key={comment.id}><p> {comment.text}</p> </ul>)}
+
+
         </>
         :
         null}
@@ -54,26 +63,4 @@ class Adventure extends React.Component {
     return {boundDeleteAdventures: (id) => dispatch(deleteAdventure(id))
   }}
 
-
-  export default connect(mapStateToProps, mapDispatchToProps)(Adventure)
-
-
-//
-//
-//     <Switch>
-//     <Route path='/adventures/:id/comments/new' render={(routerProps) => <NewComment {...routerProps}/>}/>
-//     </Switch>
-//     </>
-//     :
-//     null
-//   }
-//
-//     </div>
-//
-//
-//   )
-// }
-//
-// }
-//
-//
+export default connect(mapStateToProps, mapDispatchToProps)(Adventure)

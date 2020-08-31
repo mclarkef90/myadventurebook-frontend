@@ -12,17 +12,21 @@ import { fetchAdventures } from '../actions/fetchAdventures.js';
 class UserContainer extends React.Component {
 
   componentDidMount(){
-    this.props.fetchUsers()
-    this.props.fetchAdventures()
+    this.props.dispatchFetchUsers()
+    this.props.dispatchFetchAdventures()
   }
 
   render(){
     return(
       <div>
       <br/>
+
       <Switch>
+
         <Route path='/users/:id' component={User} />
         <Route path='/users' component={UsersList} />
+
+
       </Switch>
       </div>
     )
@@ -36,4 +40,11 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {fetchUsers, fetchAdventures})(UserContainer)
+function mapDispatchToProps(dispatch){
+  return {
+    dispatchFetchUsers: (users) => dispatch(fetchUsers(users)),
+    dispatchFetchAdventures: (adventures) => dispatch(fetchAdventures(adventures))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserContainer)

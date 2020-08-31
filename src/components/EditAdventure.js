@@ -12,16 +12,15 @@ class EditAdventure extends React.Component {
     let adventure= this.props.adventures.filter(adventure => adventure.id == aId)[0]
     console.log(adventure)
     console.log(id, aId)
-
-
     this.state={
       title: adventure.title,
       description: adventure.description,
       website_url: adventure.website_url,
       image_url: adventure.image_url,
-      id: adventure.id,
-      user_id: adventure.user_id
+      id: aId,
+      user_id: id
     }
+
   }
 
     handleOnChange = event => {
@@ -32,7 +31,6 @@ class EditAdventure extends React.Component {
 
     handleOnSubmit = event => {
       event.preventDefault();
-      let user_id= this.state.user_id;
       this.props.boundeditAdventure(this.state)
       console.log(this.state)
       this.setState({
@@ -41,11 +39,14 @@ class EditAdventure extends React.Component {
         website_url: "",
         image_url: ""
       })
-        this.props.history.push(`users/${user_id}`)
     }
+
+
 
   render() {
     return(
+      <>
+      {this.props ?
       <div>
         <form onSubmit={this.handleOnSubmit}>
         <h1>Edit Adventure </h1>
@@ -61,13 +62,15 @@ class EditAdventure extends React.Component {
         <label>Image URL:</label>
         <input type="text" name="image_url" value={this.state.image_url} onChange={this.handleOnChange}/>
         <br/><br/>
-        <input type="submit" value="Submit"/>
+        <input type="submit" value="Submit"/>{"  "}
         </form>
-        <button onClick={() => this.props.history.goBack()}>Cancel</button>
       </div>
+      :
+      null}
+      </>
       )
     }
-  }
+}
 
 function mapStateToProps(state){
   return {

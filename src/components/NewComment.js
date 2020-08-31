@@ -1,7 +1,6 @@
 import React from 'react'
 import { createComment } from '../actions/createComment'
 import { connect } from 'react-redux';
-import {withRouter} from 'react-router-dom'
 
 class NewComment extends React.Component {
 
@@ -63,4 +62,4 @@ class NewComment extends React.Component {
 //   }
 // }
 
-export default withRouter(connect(null, {createComment})(NewComment))
+export default connect(null, {createComment})(NewComment)

@@ -12,7 +12,7 @@ export default function deleteUser(id) {
     .then(user => {
           dispatch({
       type: 'DELETE_USER',
-      payload: id})
+      payload: id}, () => this.props.history.push(`/users/${id}`))
     })
   }
 }

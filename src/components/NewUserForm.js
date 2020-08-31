@@ -32,8 +32,7 @@ class NewUserForm extends React.Component {
       email: "",
       city: "",
       state: ""
-    });
-    this.props.history.push('/users')
+    }, () => (this.props.history.push('/users')));
   }
 
   render() {

@@ -20,7 +20,7 @@ export default function manageApp(state= {
     case 'ADD_LIKE':
       let likesUpdate= [...state.adventures].filter(adventure => adventure.id !== action.payload.id)
         return {
-          ...state, adventures: [...likesUpdate, action.payload],
+          ...state, adventures: [action.payload, ...likesUpdate],
         }
 
     case 'CREATE_USER':
@@ -49,6 +49,7 @@ export default function manageApp(state= {
         }
 
     case 'EDIT_ADVENTURE':
+    console.log(action.payload)
       let adventuresEdit= [...state.adventures].filter(adventure => adventure.id !== action.payload.id)
         return {
           ...state, adventures: [...adventuresEdit, action.payload],
@@ -64,7 +65,7 @@ export default function manageApp(state= {
       console.log(action.payload)
       let adventuresUpdate= [...state.adventures].filter(adventure => adventure.id !== action.payload.id)
         return {
-          ...state, adventures: [...adventuresUpdate, action.payload]
+          ...state, adventures: [action.payload, ...adventuresUpdate]
         }
 
     case 'UPDATE_COMMENT':
@@ -76,9 +77,9 @@ export default function manageApp(state= {
 
     case 'DELETE_COMMENT':
       console.log(action.payload)
-      let commentsEdit2= [...state.users].filter(user => user.id !== action.payload.id)
+      let commentsEdit2= [...state.users].filter(user => user.id !== action.payload.user.id)
       return {
-        ...state, users: [...commentsEdit2, action.payload],
+        ...state, users: [...commentsEdit2, action.payload.user],
       }
 
     default:

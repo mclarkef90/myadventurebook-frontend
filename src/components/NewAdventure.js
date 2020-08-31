@@ -33,7 +33,6 @@ class NewAdventure extends React.Component {
       image_url: "",
       user_id: ""
     })
-    this.props.history.push(`/users/${this.state.user_id}`)
   }
 
   render() {
@@ -55,8 +54,8 @@ class NewAdventure extends React.Component {
         <label>Image URL:</label>
         <input type="text" name="image_url" value={this.state.image_url} onChange={this.handleOnChange}/>
         <br/><br/>
-
-        <input type="submit" value="Submit"/>
+        <input type="submit" value="Submit"/>{"  "}
+        <button onClick={() => this.props.history.goBack()}>Close</button>
         </form>
       </div>
     )

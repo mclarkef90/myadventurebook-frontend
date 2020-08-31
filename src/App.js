@@ -4,7 +4,7 @@ import {Route, Switch} from 'react-router-dom'
 import NavBar from './components/NavBar'
 import NewUserForm from './components/NewUserForm';
 import UsersContainer from './containers/UsersContainer'
-import AdventuresContainer from './containers/AdventuresContainer'
+// import AdventuresContainer from './containers/AdventuresContainer'
 
 
 export default class App extends React.Component {

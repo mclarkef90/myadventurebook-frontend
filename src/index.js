@@ -12,9 +12,7 @@ import manageApp from './reducers/manageApp';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-
 let store= createStore(manageApp, composeEnhancers(applyMiddleware(thunk)))
-
 
 ReactDOM.render(
 
@@ -26,7 +24,3 @@ ReactDOM.render(
   ,
   document.getElementById('root')
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA

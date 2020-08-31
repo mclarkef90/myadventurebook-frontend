@@ -53,7 +53,7 @@ class EditComment extends React.Component {
     let user= parseInt(this.state.user)
     console.log(id)
     this.props.boundDeleteComment(id)
-    this.props.history.goForward(`users/${user}`)
+    this.props.history.push('/users')
 
   }
 

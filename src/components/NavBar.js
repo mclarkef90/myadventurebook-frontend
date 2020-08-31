@@ -1,7 +1,6 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 
-
 const link = {
   width: '100px',
   padding: '12px',
@@ -13,7 +12,7 @@ const link = {
 
 const NavBar = () => {
   return(
-  <div>
+    <>
     <NavLink
       to="/users"
       exact
@@ -34,19 +33,20 @@ const NavBar = () => {
       >Create User Profile
     </NavLink>
 
-    <NavLink
-      to="/adventures"
-      exact
-      style={link}
-      activeStyle={{
-        background: 'darkblue'
-      }}
-      >Adventures
-    </NavLink>
-    <br/>
-    <h1>Welcome to MyAdventureBook </h1>
-  </div>
-)
+    <h1>Welcome to MyAdventureBook!</h1>
+    <h3> An App to Dedicated to Sharing Activity Ideas </h3>
+    </>
+  )
 }
 
 export default NavBar;
+
+// <NavLink
+//   to="/adventures"
+//   exact
+//   style={link}
+//   activeStyle={{
+//     background: 'darkblue'
+//   }}
+//   >Adventures
+// </NavLink>

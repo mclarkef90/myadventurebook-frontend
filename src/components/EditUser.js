@@ -39,24 +39,24 @@ class EditUser extends React.Component {
     this.props.history.push(`/users/${id}`)
   }
 
-  // shouldComponentUpdate(nextProps, nextState){
-  //   return (this.props.users.length !== nextProps.users.length || nextState.name !== this.state.name)
-  // }
-  //
-  // componentDidUpdate(){
-  //   const user = this.props.users.filter(user => user.id == this.props.match.params.id)[0]
-  //   console.log(user.name)
-  //   if (user){
-  //     this.setState({
-  //       name: user.name,
-  //       email: user.email,
-  //       city: user.city,
-  //       state: user.state,
-  //       id: user.id
-  //     })
-  //   }
-  //
-  // }
+  shouldComponentUpdate(nextProps, nextState){
+    return (this.props.users.length !== nextProps.users.length || nextState.name !== this.state.name)
+  }
+
+  componentDidUpdate(){
+    const user = this.props.users.filter(user => user.id == this.props.match.params.id)[0]
+    console.log(user.name)
+    if (user){
+      this.setState({
+        name: user.name,
+        email: user.email,
+        city: user.city,
+        state: user.state,
+        id: user.id
+      })
+    }
+
+  }
 
 
   render(){
@@ -89,4 +89,9 @@ class EditUser extends React.Component {
   }
 }
 
-export default connect(null, {editUser})(EditUser)
+const mapStateToProps = state => {
+  return{
+    users: state.users
+  }
+}
+export default connect(mapStateToProps, {editUser})(EditUser)

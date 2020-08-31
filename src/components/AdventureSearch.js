@@ -45,7 +45,7 @@ class AdventureSearch extends React.Component{
         <p>{adventure.description}</p>
         <a href={adventure.website_url}>Learn More</a>
         <p>Like: <button data-id= {adventure.id} data-likes={adventure.likes} onClick={this.likeHandler}>{adventure.likes}</button> </p>
-        <NewComment user={this.props.user} adventure={adventure}/>
+        <NewComment history={this.props.history} user={this.props.user} adventure={adventure}/>
 
         <h3>User Comments: </h3>
 

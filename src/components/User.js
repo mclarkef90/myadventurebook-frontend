@@ -11,8 +11,6 @@ import Adventure from './Adventure'
 import EditComment from './EditComment'
 import AdventureSearch from './AdventureSearch'
 
-
-
 class User extends React.Component {
   constructor(props){
     super(props)
@@ -29,11 +27,9 @@ class User extends React.Component {
   handleDelete =(event) => {
     let id= event
     this.props.boundDeleteUser(id)
-    this.props.history.push('/users')
     }
 
   addAdventure = (event) => {
-
     event.persist()
     console.log(event)
     let id= parseInt(event.target.dataset.id)
@@ -60,9 +56,8 @@ class User extends React.Component {
 
           <Switch>
           <Route path="/users/:id/adventures/new" render= {(routerProps) => <NewAdventure {...routerProps} user={user}/> } />
-          <Route path="/users/:id/adventures/search" render={(routerProps) => <AdventureSearch user={user}/>} />
+          <Route path="/users/:id/adventures/search" render={(routerProps) => <AdventureSearch {...routerProps} user={user}/>} />
 
-          <Route path="/users/:id/adventures/:adventure_id/edit" render={(routerProps) => <EditAdventure {...routerProps} />} />
           <Route path="/users/:id/comments/:comment_id/edit" render={(routerProps) => <EditComment {...routerProps}/>} />
           <Route path="/users/:id/adventures/:adventure_id" render={(routerProps) => <Adventure {...routerProps} />}/>
           <Route path="/users/:id/edit" render={(routerProps) => <EditUser {...routerProps} user={user}/>}/>

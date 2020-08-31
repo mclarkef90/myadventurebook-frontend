@@ -6,7 +6,7 @@ function AdventuresList(props) {
 
     return(
       <div>
-        <h2> Adventures </h2>
+        <h2> My Adventures </h2>
           {props.userAdventures.map(adventure =>
             <ul key={adventure.id}>
               <Link to={`/users/${adventure.user_id}/adventures/${adventure.id}`}>{adventure.title}</Link> <br/>
