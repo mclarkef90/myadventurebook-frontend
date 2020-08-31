@@ -43,6 +43,8 @@ const NavBar = () => {
       }}
       >Adventures
     </NavLink>
+    <br/>
+    <h1>Welcome to MyAdventureBook </h1>
   </div>
 )
 }

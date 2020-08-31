@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { addLike } from '../actions/addLike';
+import NewComment from './NewComment'
 
 
 class AdventureSearch extends React.Component{
@@ -44,8 +45,10 @@ class AdventureSearch extends React.Component{
         <p>{adventure.description}</p>
         <a href={adventure.website_url}>Learn More</a>
         <p>Like: <button data-id= {adventure.id} data-likes={adventure.likes} onClick={this.likeHandler}>{adventure.likes}</button> </p>
+        <NewComment user={this.props.user} adventure={adventure}/>
 
-        <h3>Comments: </h3>
+        <h3>User Comments: </h3>
+
 
         {adventure.comments.map(comment =>
           <ul key= {comment.id}>

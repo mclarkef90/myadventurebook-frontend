@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, Link} from 'react-router-dom'
 import AdventuresList from './AdventuresList';
 import CommentsList from './CommentsList';
 import EditUser from './EditUser';
@@ -9,6 +9,8 @@ import NewAdventure from './NewAdventure'
 import EditAdventure from './EditAdventure'
 import Adventure from './Adventure'
 import EditComment from './EditComment'
+import AdventureSearch from './AdventureSearch'
+
 
 
 class User extends React.Component {
@@ -44,6 +46,7 @@ class User extends React.Component {
       <div>
       {user ?
         <>
+          <Link to={`/users/${user.id}/adventures/search`} user={user}>Search Adventures</Link>
           <h3>Profile</h3>
           <p>Name: {user.name} </p>
           <p>Email: {user.email}</p>
@@ -57,6 +60,8 @@ class User extends React.Component {
 
           <Switch>
           <Route path="/users/:id/adventures/new" render= {(routerProps) => <NewAdventure {...routerProps} user={user}/> } />
+          <Route path="/users/:id/adventures/search" render={(routerProps) => <AdventureSearch user={user}/>} />
+
           <Route path="/users/:id/adventures/:adventure_id/edit" render={(routerProps) => <EditAdventure {...routerProps} />} />
           <Route path="/users/:id/comments/:comment_id/edit" render={(routerProps) => <EditComment {...routerProps}/>} />
           <Route path="/users/:id/adventures/:adventure_id" render={(routerProps) => <Adventure {...routerProps} />}/>

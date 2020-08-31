@@ -1,17 +1,19 @@
 import React from 'react'
 import { createComment } from '../actions/createComment'
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom'
 
 class NewComment extends React.Component {
 
   constructor(props){
     super(props);
     console.log(props)
-    let id= this.props.match.params.id
+    let id= this.props.id
     console.log(id)
     this.state={
       text: "",
-      id: `${id}`
+      adventure_id: props.adventure.id,
+      user_id: props.user.id
 
     }
   }
@@ -25,12 +27,15 @@ class NewComment extends React.Component {
   handleOnSubmit = event => {
     event.preventDefault();
     console.log(this.state)
-    let id= parseInt(event.target.dataset.id)
+    let adventure=this.state.adventure_id
+    let user= this.state.user_id
     this.props.createComment(this.state)
     this.setState({
-      text: ""
+      text: "",
+      adventure_id: "",
+      user_id: ""
     })
-    this.props.history.push(`/adventures/${id}`)
+    this.props.history.push(`/users/${user}/adventures/search`)
   }
 
   render() {
@@ -58,4 +63,4 @@ class NewComment extends React.Component {
 //   }
 // }
 
-export default connect(null, {createComment})(NewComment)
+export default withRouter(connect(null, {createComment})(NewComment))

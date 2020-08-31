@@ -23,7 +23,6 @@ class UserContainer extends React.Component {
       <Switch>
         <Route path='/users/:id' component={User} />
         <Route path='/users' component={UsersList} />
-
       </Switch>
       </div>
     )

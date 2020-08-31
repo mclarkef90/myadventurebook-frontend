@@ -29,8 +29,6 @@ class NewUserForm extends React.Component {
 
     this.setState({
       name: "",
-      password: "",
-      password_confirmation: "",
       email: "",
       city: "",
       state: ""
@@ -46,12 +44,6 @@ class NewUserForm extends React.Component {
         <h2>Create User Profile</h2>
         <label>Username:</label>
         <input type="text" name="name" value={this.state.name} onChange={this.handleOnChange}/>
-        <br/><br/>
-        <label>Password:</label>
-        <input type="text" name="password" value={this.state.password} onChange={this.handleOnChange}/>
-        <br/><br/>
-        <label>Password Confirmation:</label>
-        <input type="text" name="password_confirmation" value={this.state.password_confirmation} onChange={this.handleOnChange}/>
         <br/><br/>
         <label>Email:</label>
         <input type="text" name="email" value={this.state.email} onChange={this.handleOnChange}/>

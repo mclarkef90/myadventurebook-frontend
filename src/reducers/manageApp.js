@@ -61,6 +61,7 @@ export default function manageApp(state= {
         }
 
     case 'CREATE_COMMENT':
+      console.log(action.payload)
       let adventuresUpdate= [...state.adventures].filter(adventure => adventure.id !== action.payload.id)
         return {
           ...state, adventures: [...adventuresUpdate, action.payload]

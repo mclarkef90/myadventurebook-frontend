@@ -14,11 +14,11 @@ export default class App extends React.Component {
       <div>
 
       <NavBar/>
-      <AdventuresContainer />
       <Switch>
       <Route path='/users/new' component={NewUserForm} />
       <UsersContainer />
       </Switch>
+
 
       </div>
     )

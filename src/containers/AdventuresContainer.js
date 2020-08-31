@@ -18,9 +18,6 @@ class AdventuresContainer extends React.Component {
     return(
       <div>
       <br/>
-      <Switch>
-        <Route path='/adventures' component={AdventureSearch} />
-      </Switch>
       </div>
     )
   }
